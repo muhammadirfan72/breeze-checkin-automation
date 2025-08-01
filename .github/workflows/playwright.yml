@@ -34,3 +34,15 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+
+      - name: Install nodemailer for email
+        if: ${{ always() }}
+        run: npm install nodemailer
+
+      - name: Send Playwright report via email
+        if: ${{ always() }}
+        run: node send-report.js
+        env:
+          EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_RECIPIENTS: ${{ secrets.EMAIL_RECIPIENTS }}
