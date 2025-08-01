@@ -1,12 +1,10 @@
 import { test, expect } from '@playwright/test';
 import path from 'path';
-test.use({
-    headless: false,
-});
+
 test('Breeze Check-in Test Automation', async ({ page }) => {
     // Step 1: Select Language
     await test.step('Step 1: Select Language', async () => {
-        await page.goto('https://checkin.gobreeze.com/patient/verifypatient?pa=EsenVhYiikD/Q1xcZzmp3Of2X5QPC/tZaukYDgVBW-OhLGRKP/j-PA==');
+        await page.goto('https://checkin.gobreeze.com/patient/verifypatient?pa=EsenVhYiikD/Q1xcZzmp3Of2X5QPC/tZgT3CxkJ3JJKpWkkC8p47Tg==');
         await page.getByText('English').click();
         await page.getByRole('button', { name: 'Get Started' }).click();
     });
