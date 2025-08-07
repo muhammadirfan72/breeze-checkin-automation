@@ -8,14 +8,19 @@ if (!fs.existsSync(reportPath)) {
 }
 
 const htmlContent = fs.readFileSync(reportPath, 'utf8');
-
 const transporter = nodemailer.createTransport({
-  service: 'Outlook',
+  host: 'smtp.office365.com',
+  port: 587,
+  secure: false, // Use TLS
   auth: {
     user: process.env.EMAIL_USERNAME,
     pass: process.env.EMAIL_PASSWORD,
   },
+  tls: {
+    rejectUnauthorized: false, // Optional: disable cert check (if behind corporate firewall)
+  },
 });
+
 
 const mailOptions = {
   from: process.env.EMAIL_USERNAME,

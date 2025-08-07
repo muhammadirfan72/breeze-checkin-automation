@@ -33,10 +33,11 @@ export default defineConfig({
   /* Shared settings for all the projects below. */
   use: {
     // ✅ Global headless true (enforces headless even if project isn't matched)
-    headless: true,
+    headless: false,
 
     // baseURL: 'http://localhost:3000',
     trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
   },
 
   /* Configure projects for major browsers */
@@ -45,7 +46,7 @@ export default defineConfig({
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        headless: true, // Redundant now but safe
+        headless: false, // Redundant now but safe
       },
     },
 
